@@ -125,13 +125,37 @@
   Hopefully I can create a decent Translation workflow prior to developing
   an translation system for emacs.
 
+　Emacs as a translators tool
+  [[https://lists.gnu.org/archive/html/help-gnu-emacs/2020-05/msg00168.html]]
+  https://www.emacswiki.org/emacs/CategoryInternationalization
+  https://www.mojotech.com/blog/automating-internationalization-workflow-in-emacs/
+  https://emacs.stackexchange.com/questions/2486/emacs-as-a-cat-computer-assisted-translation-tool
+  http://sakito.jp/moin/moin.cgi/%E7%BF%BB%E8%A8%B3%E3%83%A1%E3%83%A2%E3%83%AA
+  
+  
+  
+  po-mode
+  https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+  https://ayatakesi.github.io/gettext/0.18.3/html/PO-Mode.html
+  ob-translate
+  https://github.com/krisajenkins/ob-translate
+  google-translate
+  https://github.com/atykhonov/google-translate
+  go-translate
+  https://github.com/lorniu/go-translate
+  text translator.el
+
+  
+
+  
 ** Research Related Functionality
    #+BEGIN_SRC emacs-lisp
-     (use-package osx-dictionary
-       :ensure t
-       :bind (("C-c d" . osx-dictionary-search-word-at-point)
-	      ("C-c i" . osx-dictionary-search-input)
-	      ))
+     ;; This is for MacOS, looking for a Windows Alternate
+     ;;(use-package osx-dictionary
+     ;;  :ensure t
+     ;;  :bind (("C-c d" . osx-dictionary-search-word-at-point)
+     ;;	 ("C-c i" . osx-dictionary-search-input)
+     ;;	 ))
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -170,7 +194,7 @@
     (org-roam-setup))
    #+END_SRC
 
-  
+   
 * Presentations
   Starting off with reveal.js to make opensource presentations.
 
@@ -196,3 +220,12 @@
 
 
   #+END_SRC
+
+
+
+* Other
+
+  tategaki.el
+  aozora.el
+  scimax-editmarks (jkitchin)
+  critic-markup (joostkremers)
