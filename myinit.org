@@ -46,6 +46,35 @@
   #+END_SRC
   
 
+* Reading
+
+** PDF Utilities
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package pdf-tools
+       :config
+       (pdf-tools-install)
+       (setq pdf-view-resize-factor 1.1)
+       (setq-default pdf-view-display-size 'fit-page)
+       )
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package org-pdftools
+       :hook (org-load-hook . org-pdftools-setup-link)
+       )
+   #+END_SRC
+
+   
+
+** Aozora and Tategaki
+   #+BEGIN_SRC emacs-lisp
+     (use-package aozora-view
+       :ensure t)
+   #+END_SRC
+
+
+
 * Document Creation,Text-Editing
   I will put all things related to document creation and text editing here.
   
@@ -125,37 +154,50 @@
   Hopefully I can create a decent Translation workflow prior to developing
   an translation system for emacs.
 
-　Emacs as a translators tool
-  [[https://lists.gnu.org/archive/html/help-gnu-emacs/2020-05/msg00168.html]]
-  https://www.emacswiki.org/emacs/CategoryInternationalization
-  https://www.mojotech.com/blog/automating-internationalization-workflow-in-emacs/
-  https://emacs.stackexchange.com/questions/2486/emacs-as-a-cat-computer-assisted-translation-tool
-  http://sakito.jp/moin/moin.cgi/%E7%BF%BB%E8%A8%B3%E3%83%A1%E3%83%A2%E3%83%AA
-  
-  
-  
-  po-mode
-  https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
-  https://ayatakesi.github.io/gettext/0.18.3/html/PO-Mode.html
-  ob-translate
-  https://github.com/krisajenkins/ob-translate
-  google-translate
-  https://github.com/atykhonov/google-translate
-  go-translate
-  https://github.com/lorniu/go-translate
-  text translator.el
+*** Notes
+     ** Translation Related - TM, MT, TB etc
+    Hopefully I can create a decent Translation workflow prior to developing
+    an translation system for emacs.
 
+  　Emacs as a translators tool
+    [[https://lists.gnu.org/archive/html/help-gnu-emacs/2020-05/msg00168.html]]
+    https://www.emacswiki.org/emacs/CategoryInternationalization
+    https://www.mojotech.com/blog/automating-internationalization-workflow-in-emacs/
+    https://emacs.stackexchange.com/questions/2486/emacs-as-a-cat-computer-assisted-translation-tool
+    http://sakito.jp/moin/moin.cgi/%E7%BF%BB%E8%A8%B3%E3%83%A1%E3%83%A2%E3%83%AA
   
+  
+  
+    po-mode
+    https://www.gnu.org/software/gettext/manual/html_node/PO-Mode.html
+    https://ayatakesi.github.io/gettext/0.18.3/html/PO-Mode.html
+    ob-translate
+    https://github.com/krisajenkins/ob-translate
+    google-translate
+    https://github.com/atykhonov/google-translate
+    go-translate
+    https://github.com/lorniu/go-translate
+    text translator.el 
+  
+  
+    #+BEGIN_SRC emacs-lisp
+      (use-package google-translate
+	:ensure t)
+    #+END_SRC
 
   
 ** Research Related Functionality
    #+BEGIN_SRC emacs-lisp
-     ;; This is for MacOS, looking for a Windows Alternate
-     ;;(use-package osx-dictionary
-     ;;  :ensure t
-     ;;  :bind (("C-c d" . osx-dictionary-search-word-at-point)
-     ;;	 ("C-c i" . osx-dictionary-search-input)
-     ;;	 ))
+     (use-package osx-dictionary
+       :ensure t
+       :bind (("C-c d" . osx-dictionary-search-word-at-point)
+	      ("C-c i" . osx-dictionary-search-input)
+	      ))
+   #+END_SRC
+
+   #+BEGIN_SRC emacs-lisp
+     (use-package powerthesaurus
+       :ensure t)
    #+END_SRC
 
    #+BEGIN_SRC emacs-lisp
@@ -214,25 +256,53 @@
 
 * Development
 
-
-** Magit
+** Code Checking
+   #+BEGIN_SRC emacs-lisp
+     (use-package flycheck
+       :ensure t
+       :init
+       (global-flycheck-mode t ))
+   #+END_SRC
+** Code Expansion
+   #+BEGIN_SRC emacs-lisp
+     (use-package yasnippet
+       :ensure t
+       :init
+       (yas-global-mode 1))
+   #+END_SRC
+   
+** Version Control - Magit
    #+BEGIN_SRC emacs-lisp
      (use-package magit
        :ensure t)
    #+END_SRC
 
-** Python
-   #+BEGIN_SRC emacs-lisp
-     (use-package flycheck
-       :ensure t
-       :init
-       (global-flycheck-mode t))
-   #+END_SRC
+** Python Related Configuration  
+    #+BEGIN_SRC emacs-lisp
+      ;;Setting version of Python to be used by Emacs
+      (setq python-shell-interpreter "python3")
+    #+END_SRC
 
-   
+    #+BEGIN_SRC emacs-lisp
+      (use-package jedi
+	:ensure t
+	:init
+	(add-hook 'python-mode-hook 'jedi:setup)
+	(add-hook 'python-mode-hook 'jedi:ac-setup))
+    #+END_SRC
+
+    #+BEGIN_SRC emacs-lisp
+      (use-package elpy
+	:ensure t
+	:config
+	(elpy-enable))
+    #+END_SRC
+
+    
+    
 * Other
 
   tategaki.el
   aozora.el
   scimax-editmarks (jkitchin)
-  critic-markup (joostkremers)
+  critic-markup (joostkremers)   
