@@ -1,6 +1,9 @@
 (use-package try
   :ensure t)
 
+;;Trying to get Windows Graphical Emacs to connect to WSL Ubuntu Terminal MySQL Server
+;;(add-to-list 'exec-path "\\wsl$\Ubuntu\usr\bin")
+
 (use-package which-key
   :ensure t
   :config

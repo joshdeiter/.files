@@ -1,20 +1,11 @@
 #+STARTUP: Overview
 
-
 * Package Managment
   #+BEGIN_SRC emacs-lisp
     (use-package try
       :ensure t)
   #+END_SRC
 
-  https://github.com/hubisan/emacs-wsl
-  
-  #+BEGIN_SRC emacs-lisp
-    ;;Trying to get Windows Graphical Emacs to connect to WSL Ubuntu Terminal MySQL Server
-    ;;(add-to-list 'exec-path "\\wsl$\Ubuntu\usr\bin") 
-
-  #+END_SRC
-  
 
 * Interface Tweaks
 
